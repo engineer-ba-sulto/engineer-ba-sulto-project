@@ -8,8 +8,17 @@ gsap.registerPlugin(ScrollTrigger);
  * ヘッダー入場、カード in-view + stagger、ホバー/タップ効果
  */
 export function initAnimations() {
+  const browserGlobal = globalThis as {
+    document?: unknown;
+    matchMedia?: (query: string) => { matches: boolean };
+  };
+
+  if (!browserGlobal.document || !browserGlobal.matchMedia) {
+    return;
+  }
+
   // ユーザーが動きを抑える設定（prefers-reduced-motion）をしているかチェック
-  const prefersReducedMotion = window.matchMedia(
+  const prefersReducedMotion = browserGlobal.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
 
