@@ -1,17 +1,31 @@
 ---
 import "../styles/globals.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Engineer BA-Sulto | Indie Mobile Dev",
+  description = "Portfolio of Engineer BA-Sulto, an Indie Mobile Developer showcasing web and mobile applications.",
+} = Astro.props;
 ---
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 	</head>
-	<body>
+	<body class="font-sans antialiased bg-[#edf7f2] text-[#1f2937]">
 		<slot />
 	</body>
 </html>
