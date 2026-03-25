@@ -1,0 +1,30 @@
+---
+import type { Project } from "../../types/project";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<section id="features" class="max-w-7xl mx-auto px-8 py-20">
+	<div class="mb-12">
+		<p class="text-xs font-bold text-[#31a376] uppercase tracking-widest mb-2">
+			The Essentials
+		</p>
+		<h2 class="text-4xl font-bold tracking-tight text-[#1f2937]">
+			Key Features
+		</h2>
+	</div>
+	<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+		{project.detail?.features?.map((feature) => (
+			<div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-50 hover:-translate-y-1 transition-transform">
+				<h3 class="text-lg font-bold mb-3">{feature.title}</h3>
+				<p class="text-[#6b7280] text-sm leading-relaxed">
+					{feature.desc}
+				</p>
+			</div>
+		))}
+  </div>
+</section>
