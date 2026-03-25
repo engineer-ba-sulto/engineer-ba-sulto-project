@@ -1,0 +1,60 @@
+---
+import { Icons } from "../../lib/icons.ts";
+
+interface Props {
+  project: {
+    title: string;
+    description: string;
+    image: string;
+    tags: string[];
+    slug: string;
+  };
+}
+
+const { project } = Astro.props;
+---
+
+<article
+  class="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col h-full group overflow-hidden"
+  data-animate="portfolio-item"
+>
+  <div class="relative w-full aspect-video overflow-hidden">
+    <img
+      src={project.image}
+      alt={project.title}
+      class="object-cover transition-transform duration-500 group-hover:scale-105 w-full h-full"
+      referrerpolicy="no-referrer"
+    />
+  </div>
+  <div class="p-6 flex flex-col grow">
+    <div class="grow">
+      <h3 class="text-2xl font-bold text-gray-800 mb-3 leading-tight">
+        {project.title}
+      </h3>
+      <p class="text-gray-500 text-base mb-6 leading-relaxed line-clamp-3">
+        {project.description}
+      </p>
+      <div class="flex flex-wrap gap-2 mb-6">
+        {project.tags.map((tag) => (
+          <span
+            class="py-1 px-3 bg-[#d1eedf] text-[#1e5631] text-xs font-semibold rounded-full"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+    <a
+      href={project.slug === "#" ? "#" : `/projects/${project.slug}`}
+      class="w-full"
+    >
+      <button
+        class="w-full bg-[#31a376] hover:bg-[#248a60] text-white font-semibold py-3 rounded-full transition-all duration-200 ease-out flex items-center justify-center gap-2 hover:scale-[1.03] active:scale-[0.97]"
+        data-animate="project-button"
+      >
+        View Project
+        <Fragment set:html={Icons.ExternalLink} />
+      </button>
+    </a>
+  </div>
+</article>

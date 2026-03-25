@@ -1,0 +1,68 @@
+---
+import { services } from "../contents/portfolio.ts";
+import { Icons } from "../lib/icons.ts";
+---
+
+<header class="w-full bg-[#e0f0e5] pt-16 pb-12 px-4 flex flex-col items-center" data-animate="header">
+  <div class="flex flex-col items-center mb-8 text-center">
+    <div class="relative w-24 h-24 mb-4">
+      <img
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5YPXT6zuqXDpQGHi7kUSAAEqXSswdPPvC-aqBaCruGz1yzfjo7zfB9Ff94yTNXRxgH2zBFrYV8fQD37uN90ZCjzmpXShLrefi67DVYjNqzHxMrHvURKicHV-BiruRG_DpEJAd-qapZJwSRVyVl-r9C8ecl6-oh8P2V5GhJYNRqkHU8l_ZM0pm8z60ZDEUfKaRJ-86bX221K0LDuh8dQfJQKidQWRrsDWJy7C45_CQRV4j_8_eGzXQAzdL27Nif4otbeO-0cpfsZI"
+        alt="Engineer BA-Sulto"
+        class="rounded-full border-4 border-[#bce1ce] shadow-sm object-cover w-full h-full"
+        referrerpolicy="no-referrer"
+      />
+    </div>
+    <div class="flex items-center gap-2">
+      <h1 class="text-2xl font-bold text-gray-800">
+        Engineer BA-Sulto
+      </h1>
+      <Fragment set:html={Icons.CheckCircle2} />
+    </div>
+    <div class="flex flex-wrap justify-center gap-2 mt-3">
+      {services.map((title) => (
+        <span
+          class="px-4 py-1.5 border border-[#31a376]/30 bg-white text-[#31a376] text-sm font-medium rounded-full shadow-sm"
+        >
+          {title}
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-4 mb-8 w-full max-w-4xl justify-center">
+    <div
+      class="bg-white rounded-3xl shadow-sm p-6 flex flex-col items-center justify-center min-w-[200px] transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-[1.02] hover:shadow-xl cursor-default"
+      data-animate="stats-card"
+    >
+      <span class="text-2xl font-bold text-[#31a376] mb-1">9+</span>
+      <span class="text-sm text-gray-500 font-medium">
+        Apps Published
+      </span>
+    </div>
+  </div>
+
+  <div class="flex gap-4">
+    <a
+      href="#"
+      class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-600 hover:text-[#31a376] shadow-sm transition-all duration-200 ease-out hover:scale-115 active:scale-90"
+      data-animate="social-icon"
+    >
+      <Fragment set:html={Icons.X} />
+    </a>
+    <a
+      href="#"
+      class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-600 hover:text-[#31a376] shadow-sm transition-all duration-200 ease-out hover:scale-115 active:scale-90"
+      data-animate="social-icon"
+    >
+      <Fragment set:html={Icons.Github} />
+    </a>
+    <a
+      href="#"
+      class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-600 hover:text-[#31a376] shadow-sm transition-all duration-200 ease-out hover:scale-115 active:scale-90"
+      data-animate="social-icon"
+    >
+      <Fragment set:html={Icons.Linkedin} />
+    </a>
+  </div>
+</header>
