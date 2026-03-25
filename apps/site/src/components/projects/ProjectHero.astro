@@ -1,0 +1,61 @@
+---
+import { Icons } from "../../lib/icons";
+import type { Project } from "../../types/project";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const hasDetail = !!project.detail;
+---
+
+<section class="max-w-7xl mx-auto px-8 pt-16 pb-24 grid md:grid-cols-2 gap-12 items-center">
+  <div class="max-w-xl animate-in fade-in slide-in-from-left duration-700">
+    <div class="flex flex-wrap gap-2 mb-6">
+      {project.tags.map((tag) => (
+        <span class="bg-[#d1eedf] text-[#1e5631] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+          {tag}
+        </span>
+      ))}
+    </div>
+    <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6 tracking-tight">
+      {project.title.split(' - ')[0]}
+      <br />
+      <span class="text-[#31a376]">{project.title.split(' - ')[1] || ""}</span>
+    </h1>
+    <p class="text-lg text-[#6b7280] mb-10 leading-relaxed max-w-lg">
+      {project.description}
+    </p>
+    <div class="flex items-center gap-4">
+      {hasDetail && project.detail?.appStoreUrl ? (
+        <a href={project.detail.appStoreUrl} class="bg-[#31a376] text-white px-6 py-3.5 rounded-lg font-medium flex items-center gap-2 hover:bg-[#248a60] transition-all shadow-md">
+          <Fragment set:html={Icons.Smartphone} />
+          App Store
+        </a>
+      ) : (
+        <button disabled class="bg-gray-200 text-gray-500 px-6 py-3.5 rounded-lg font-medium flex items-center gap-2 cursor-not-allowed">
+          <Fragment set:html={Icons.Smartphone} />
+          Coming Soon
+        </button>
+      )}
+      {hasDetail && project.detail?.demoUrl && (
+        <a href={project.detail.demoUrl} class="bg-white text-[#31a376] border border-gray-200 px-6 py-3.5 rounded-lg font-medium flex items-center gap-2 hover:bg-gray-50 transition-all shadow-sm">
+          <Fragment set:html={Icons.Play} />
+          Watch Demo
+        </a>
+      )}
+    </div>
+  </div>
+
+  <div class="relative flex justify-center lg:justify-end animate-in fade-in scale-in-95 duration-700">
+    <div class="relative w-[320px] h-[650px] rounded-[2.5rem] shadow-2xl border-8 border-gray-900 overflow-hidden">
+      <img
+        src={project.detail?.heroImage || project.image}
+        alt={`${project.title} Mockup`}
+        class="w-full h-full object-cover"
+        referrerpolicy="no-referrer"
+      />
+    </div>
+  </div>
+</section>

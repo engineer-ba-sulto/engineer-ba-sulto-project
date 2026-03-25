@@ -1,0 +1,37 @@
+---
+import Footer from "../../components/Footer.astro";
+import ProjectFeatures from "../../components/projects/ProjectFeatures.astro";
+import ProjectHeader from "../../components/projects/ProjectHeader.astro";
+import ProjectHero from "../../components/projects/ProjectHero.astro";
+import ProjectTechStack from "../../components/projects/ProjectTechStack.astro";
+import { projects } from "../../contents/portfolio";
+import Layout from "../../layouts/Layout.astro";
+import type { Project } from "../../types/project";
+
+export async function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={`${project.title} | Engineer BA-Sulto`} description={project.description}>
+  <div class="min-h-screen bg-[#edf7f2] text-[#1f2937] font-sans">
+    <ProjectHeader />
+
+    <main>
+      <ProjectHero project={project} />
+      {project.detail?.features && project.detail.features.length > 0 && <ProjectFeatures project={project} />}
+      <ProjectTechStack project={project} />
+    </main>
+
+    <Footer />
+  </div>
+</Layout>
