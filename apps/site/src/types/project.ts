@@ -9,6 +9,6 @@ export type Project = {
     features?: { title: string; desc: string }[];
     techStack?: string[];
     appStoreUrl?: string;
-    demoUrl?: string;
+    lpUrl?: string;
   };
 };

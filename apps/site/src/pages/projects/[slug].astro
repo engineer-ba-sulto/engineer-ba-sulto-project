@@ -4,11 +4,12 @@ import ProjectFeatures from "../../components/projects/ProjectFeatures.astro";
 import ProjectHeader from "../../components/projects/ProjectHeader.astro";
 import ProjectHero from "../../components/projects/ProjectHero.astro";
 import ProjectTechStack from "../../components/projects/ProjectTechStack.astro";
-import { projects } from "../../contents/portfolio";
 import Layout from "../../layouts/Layout.astro";
+import { loadProjects } from "../../lib/projects";
 import type { Project } from "../../types/project";
 
 export async function getStaticPaths() {
+  const projects = await loadProjects();
   return projects.map((project) => ({
     params: { slug: project.slug },
     props: { project },

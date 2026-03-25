@@ -39,10 +39,10 @@ const hasDetail = !!project.detail;
           Coming Soon
         </button>
       )}
-      {hasDetail && project.detail?.demoUrl && (
-        <a href={project.detail.demoUrl} class="bg-white text-[#31a376] border border-gray-200 px-6 py-3.5 rounded-lg font-medium flex items-center gap-2 hover:bg-gray-50 transition-all shadow-sm">
+      {hasDetail && project.detail?.lpUrl && (
+        <a href={project.detail.lpUrl} class="bg-white text-[#31a376] border border-gray-200 px-6 py-3.5 rounded-lg font-medium flex items-center gap-2 hover:bg-gray-50 transition-all shadow-sm">
           <Fragment set:html={Icons.Play} />
-          Watch Demo
+          Watch LP
         </a>
       )}
     </div>
