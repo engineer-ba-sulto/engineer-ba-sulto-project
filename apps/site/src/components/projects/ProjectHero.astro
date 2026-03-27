@@ -29,7 +29,7 @@ const hasDetail = !!project.detail;
     </p>
     <div class="flex items-center gap-4">
       {hasDetail && project.detail?.appStoreUrl ? (
-        <a href={project.detail.appStoreUrl} class="bg-[#31a376] text-white px-6 py-3.5 rounded-lg font-medium flex items-center gap-2 hover:bg-[#248a60] transition-all shadow-md">
+        <a href={project.detail.appStoreUrl} class="bg-[#31a376] text-white px-6 py-3.5 rounded-lg font-medium flex items-center gap-2 hover:bg-[#248a60] transition-all shadow-md" target="_blank">
           <Fragment set:html={Icons.Smartphone} />
           App Store
         </a>
@@ -40,7 +40,7 @@ const hasDetail = !!project.detail;
         </button>
       )}
       {hasDetail && project.detail?.lpUrl && (
-        <a href={project.detail.lpUrl} class="bg-white text-[#31a376] border border-gray-200 px-6 py-3.5 rounded-lg font-medium flex items-center gap-2 hover:bg-gray-50 transition-all shadow-sm">
+        <a href={project.detail.lpUrl} class="bg-white text-[#31a376] border border-gray-200 px-6 py-3.5 rounded-lg font-medium flex items-center gap-2 hover:bg-gray-50 transition-all shadow-sm" target="_blank">
           <Fragment set:html={Icons.Play} />
           Watch LP
         </a>
